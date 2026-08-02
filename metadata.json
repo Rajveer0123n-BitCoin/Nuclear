@@ -1,0 +1,6 @@
+{
+    "name": "Number Guessing Challenge",
+    "description": "A simple number guessing game built with React and TypeScript.",
+     "requestFramePermissions": [],
+     "majorCapabilities": [ "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
