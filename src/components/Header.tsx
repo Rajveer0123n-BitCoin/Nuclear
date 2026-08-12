@@ -66,3 +66,33 @@ export const Header: React.FC<HeaderProps> = ({
         >
           <HelpCircle className="w-4 h-4" />
         </button>
+
+        <button
+          onClick={() => {
+            soundFx.playClick();
+            onOpenStats();
+          }}
+          className="p-2 text-black border border-black/20 hover:border-black hover:bg-black hover:text-white transition-all"
+          title="Personal Bests"
+        >
+          <Trophy className="w-4 h-4" />
+        </button>
+
+        <button
+          onClick={() => {
+            soundFx.playClick();
+            onToggleMute();
+          }}
+          className="p-2 text-black border border-black/20 hover:border-black hover:bg-black hover:text-white transition-all"
+          title={isMuted ? 'Unmute Audio' : 'Mute Audio'}
+        >
+          {isMuted ? (
+            <VolumeX className="w-4 h-4 text-rose-600" />
+          ) : (
+            <Volume2 className="w-4 h-4" />
+          )}
+        </button>
+      </div>
+    </header>
+  );
+};

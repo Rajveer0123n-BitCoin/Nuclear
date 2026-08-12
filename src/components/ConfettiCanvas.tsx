@@ -115,6 +115,3 @@ export const ConfettiCanvas: React.FC<ConfettiProps> = ({ active }) => {
     />
   );
 };
-
-
-//nn
