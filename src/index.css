@@ -1,31 +1,21 @@
 @import "tailwindcss";
-
 @layer base {
   body {
     font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
     background-color: #F2F2F2;
     color: #1A1A1A;
   }
-
   code, kbd, samp, pre, .font-mono {
     font-family: 'JetBrains Mono', monospace;
   }
 }
-
-/* Custom scrollbar for history list */
 .scrollbar-thin::-webkit-scrollbar {
   width: 4px;
   height: 4px;
-}
-
-.scrollbar-thin::-webkit-scrollbar-track {
+}.scrollbar-thin::-webkit-scrollbar-track {
   background: transparent;
-}
-
-.scrollbar-thin::-webkit-scrollbar-thumb {
+}.scrollbar-thin::-webkit-scrollbar-thumb {
   background: rgba(26, 26, 26, 0.2);
-}
-
-.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+}.scrollbar-thin::-webkit-scrollbar-thumb:hover {
   background: rgba(26, 26, 26, 0.5);
 }

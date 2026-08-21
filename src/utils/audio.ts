@@ -160,9 +160,7 @@ class SoundEffectsManager {
         osc.start(now + idx * 0.1);
         osc.stop(now + idx * 0.1 + 0.35);
       });
-    } catch {
-      // Ignore
-    }
+    } catch {    }
   }
 }
 

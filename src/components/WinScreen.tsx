@@ -32,11 +32,9 @@ export const WinScreen: React.FC<WinScreenProps> = ({
       className="w-full max-w-lg mx-auto px-4 py-8"
     >
       <div className="bg-white border-2 border-black p-6 sm:p-8 text-center relative shadow-md">
-        {/* Victory Icon / Badge */}
         <div className="w-16 h-16 bg-black text-white flex items-center justify-center mx-auto mb-4">
           <Trophy className="w-8 h-8" />
         </div>
-
         <span className="text-[10px] font-mono uppercase tracking-[0.3em] opacity-50 block mb-1">
           Deduction Completed
         </span>
@@ -44,8 +42,6 @@ export const WinScreen: React.FC<WinScreenProps> = ({
         <h2 className="text-3xl sm:text-4xl font-black uppercase tracking-tighter text-[#1A1A1A]">
           Victory Achieved
         </h2>
-
-        {/* New Record Banner */}
         {isNewBestRecord && (
           <motion.div
             initial={{ opacity: 0, y: 10 }}
@@ -56,8 +52,6 @@ export const WinScreen: React.FC<WinScreenProps> = ({
             <span>New Personal Best Record!</span>
           </motion.div>
         )}
-
-        {/* Secret Number Display Banner */}
         <div className="my-6 p-4 bg-[#F2F2F2] border border-black/10">
           <span className="text-[10px] font-mono uppercase tracking-widest opacity-50 block mb-1">
             Secret Target Number
@@ -66,8 +60,6 @@ export const WinScreen: React.FC<WinScreenProps> = ({
             {formatNumber(secretNumber)}
           </span>
         </div>
-
-        {/* Rating Card */}
         <div className="p-4 bg-white border border-black/20 mb-6 text-left">
           <div className="flex items-center justify-between mb-2">
             <div className="flex items-center gap-2">
@@ -76,8 +68,6 @@ export const WinScreen: React.FC<WinScreenProps> = ({
                 Rating: {ratingDetail.rating}
               </span>
             </div>
-
-            {/* Stars */}
             <div className="flex items-center gap-1">
               {[1, 2, 3, 4].map((star) => (
                 <Star
@@ -95,8 +85,6 @@ export const WinScreen: React.FC<WinScreenProps> = ({
             {ratingDetail.message}
           </p>
         </div>
-
-        {/* Summary Stats Grid */}
         <div className="grid grid-cols-3 gap-2 mb-8 text-center font-mono">
           <div className="p-3 bg-[#F2F2F2] border border-black/10">
             <span className="text-[9px] uppercase font-bold opacity-50 block">
@@ -106,7 +94,6 @@ export const WinScreen: React.FC<WinScreenProps> = ({
               {totalGuesses}
             </span>
           </div>
-
           <div className="p-3 bg-[#F2F2F2] border border-black/10">
             <span className="text-[9px] uppercase font-bold opacity-50 block">
               Difficulty
@@ -115,7 +102,6 @@ export const WinScreen: React.FC<WinScreenProps> = ({
               {config.name}
             </span>
           </div>
-
           <div className="p-3 bg-[#F2F2F2] border border-black/10">
             <span className="text-[9px] uppercase font-bold opacity-50 block">
               Optimal
@@ -125,8 +111,6 @@ export const WinScreen: React.FC<WinScreenProps> = ({
             </span>
           </div>
         </div>
-
-        {/* Action Buttons */}
         <div className="flex flex-col sm:flex-row items-center gap-3">
           <button
             onClick={() => {

@@ -38,40 +38,30 @@ export const GameArea: React.FC<GameAreaProps> = ({
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [isShaking, setIsShaking] = useState<boolean>(false);
   const inputRef = useRef<HTMLInputElement | null>(null);
-
-  // Auto-focus input
   useEffect(() => {
     inputRef.current?.focus();
   }, [guesses.length]);
-
   const lastGuess = guesses.length > 0 ? guesses[guesses.length - 1] : null;
-
   const handleSubmit = (e?: React.FormEvent) => {
     if (e) e.preventDefault();
-
     const trimmed = inputValue.trim();
     if (!trimmed) {
       triggerError('Enter a numerical value.');
       return;
     }
-
     const num = parseInt(trimmed, 10);
-
     if (isNaN(num)) {
       triggerError('Invalid whole number.');
       return;
     }
-
     if (num < config.min || num > config.max) {
       triggerError(`Value must be between ${formatNumber(config.min)} and ${formatNumber(config.max)}.`);
       return;
     }
-
     setErrorMessage(null);
     setInputValue('');
     onGuess(num);
   };
-
   const triggerError = (msg: string) => {
     soundFx.playError();
     setErrorMessage(msg);
@@ -79,37 +69,28 @@ export const GameArea: React.FC<GameAreaProps> = ({
     setTimeout(() => setIsShaking(false), 500);
     inputRef.current?.focus();
   };
-
   const midPoint = Math.floor((currentMin + currentMax) / 2);
-
   const fillMidpoint = () => {
     soundFx.playClick();
     setInputValue(midPoint.toString());
     setErrorMessage(null);
     inputRef.current?.focus();
   };
-
   const totalRange = config.max - config.min + 1;
   const currentRangeSize = currentMax - currentMin + 1;
   const rangeNarrowPercent = Math.max(0, Math.min(100, Math.round(100 - (currentRangeSize / totalRange) * 100)));
-
-  // Compute watermark feedback text
   const feedbackWatermark = !lastGuess
     ? 'TARGET'
     : lastGuess.feedback === 'higher'
     ? 'HIGHER'
     : 'LOWER';
-
   return (
     <div className="w-full max-w-4xl mx-auto px-4 py-4 flex flex-col justify-between relative min-h-[520px]">
-      {/* Background Giant Artistic Watermark */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden z-0">
         <span className="text-[120px] sm:text-[200px] font-black text-black/[0.035] tracking-tighter uppercase font-mono transition-all duration-300">
           {feedbackWatermark}
         </span>
       </div>
-
-      {/* Top Session & Domain Status Header */}
       <div className="z-10 flex flex-wrap items-center justify-between gap-3 border-b border-black/10 pb-4 mb-6">
         <div>
           <span className="text-[10px] font-mono uppercase tracking-[0.3em] opacity-50 block">
@@ -146,10 +127,7 @@ export const GameArea: React.FC<GameAreaProps> = ({
           </button>
         </div>
       </div>
-
-      {/* Main Center Gameplay Interactive Panel */}
       <div className="z-10 flex-1 flex flex-col items-center justify-center my-4">
-        {/* Valid Range Indicator Bar */}
         <div className="w-full max-w-md bg-white border border-black/10 p-3 mb-6">
           <div className="flex items-center justify-between font-mono text-[11px] mb-1.5">
             <span className="opacity-50">Active Bounds</span>
@@ -166,8 +144,6 @@ export const GameArea: React.FC<GameAreaProps> = ({
             />
           </div>
         </div>
-
-        {/* Input Form */}
         <form onSubmit={handleSubmit} className="w-full max-w-md flex flex-col items-center">
           <motion.div
             animate={isShaking ? { x: [-10, 10, -8, 8, -4, 4, 0] } : {}}
@@ -193,8 +169,6 @@ export const GameArea: React.FC<GameAreaProps> = ({
                 className="w-full bg-transparent text-5xl sm:text-7xl font-black font-mono text-center outline-none border-b-4 border-black/20 focus:border-black transition-colors py-2 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
               />
             </div>
-
-            {/* Error Message */}
             <AnimatePresence>
               {errorMessage && (
                 <motion.div
@@ -208,8 +182,6 @@ export const GameArea: React.FC<GameAreaProps> = ({
                 </motion.div>
               )}
             </AnimatePresence>
-
-            {/* Feedback Message */}
             {lastGuess && (
               <div className="mb-6 text-center">
                 <span className={`inline-flex items-center gap-1.5 px-4 py-1.5 font-mono text-xs font-bold tracking-widest uppercase border ${
@@ -229,8 +201,6 @@ export const GameArea: React.FC<GameAreaProps> = ({
                 </span>
               </div>
             )}
-
-            {/* Action Buttons */}
             <div className="flex flex-wrap items-center justify-center gap-3 w-full">
               <button
                 type="button"
@@ -253,8 +223,6 @@ export const GameArea: React.FC<GameAreaProps> = ({
           </motion.div>
         </form>
       </div>
-
-      {/* History Visualizer Bar Chart Footer */}
       {guesses.length > 0 && (
         <div className="z-10 mt-8 pt-4 border-t border-black/10">
           <div className="flex items-center justify-between mb-3">

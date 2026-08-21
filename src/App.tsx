@@ -154,10 +154,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-[#F2F2F2] text-[#1A1A1A] flex flex-col font-sans transition-colors duration-300 selection:bg-black selection:text-white">
-      {/* Celebration Confetti on Victory */}
       <ConfettiCanvas active={gameState === 'won'} />
-
-      {/* Top Header Navigation */}
       <Header
         isMuted={isMuted}
         onToggleMute={handleToggleMute}
@@ -166,8 +163,6 @@ export default function App() {
         onResetToDifficulty={handleResetToDifficulty}
         isPlaying={gameState !== 'selecting'}
       />
-
-      {/* Main Content View Container */}
       <main className="flex-1 flex flex-col justify-center py-6">
         {gameState === 'selecting' && (
           <DifficultySelector
@@ -175,7 +170,6 @@ export default function App() {
             bestScores={bestScores}
           />
         )}
-
         {gameState === 'playing' && (
           <GameArea
             config={currentConfig}
@@ -188,7 +182,6 @@ export default function App() {
             onResetDifficulty={handleResetToDifficulty}
           />
         )}
-
         {gameState === 'won' && (
           <WinScreen
             config={currentConfig}
@@ -200,21 +193,15 @@ export default function App() {
           />
         )}
       </main>
-
-      {/* Editorial Footer */}
       <footer className="py-4 px-6 border-t border-black/10 flex flex-col sm:flex-row items-center justify-between text-[10px] font-mono uppercase tracking-widest text-black/50">
-        <p>Number Guessing Challenge // Artistic Flair Edition</p>
+        <p>Number Guessing Challenge //I want to make it minimal looking pro</p>
         <p>Deduction Engine NC-8829-X</p>
       </footer>
-
-      {/* Modals */}
-      <StatsModal
+     <StatsModal
         isOpen={isStatsOpen}
         onClose={() => setIsStatsOpen(false)}
         bestScores={bestScores}
-        onClearStats={handleClearStats}
-      />
-
+        onClearStats={handleClearStats}      />
       <HelpModal
         isOpen={isHelpOpen}
         onClose={() => setIsHelpOpen(false)}
